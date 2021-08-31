@@ -15,7 +15,9 @@ def stable_roommates_phase_1(preference, rank):
     
     while len(to_process) > 0:
         i = to_process[0]
-        
+        # for j in rank:
+        #     print(rank[j])  
+        print(preference)
         # update first pointer if necessary
         while preference[i][first[i]] == None:
             first[i] += 1
@@ -31,6 +33,9 @@ def stable_roommates_phase_1(preference, rank):
             # all candidates worse than i are rejected, must remove top_pick from their preference list
             for x in range(match_rank+1, last[top_pick]):
                 reject = preference[top_pick][x]
+                print(reject)
+                print(top_pick)
+                print(rank)
                 preference[reject][rank[reject][top_pick]] = None
             
             # update last pointer
@@ -145,6 +150,7 @@ def match_roommates(preferences):
     
     return matches
 
-preferences = [[2, 3, 1, 5, 4], [5, 4, 3, 0, 2], [1, 3, 4, 0, 5], [4, 1, 2, 5, 0], [2, 0, 1, 3, 5], [4, 0, 2, 3, 1]]
-
+#preferences = [[2, 1, 3, 5, 4], [4, 5, 3, 0, 2], [1, 3, 4, 0, 5], [4, 1, 2, 5, 0], [2, 0, 1, 3, 5], [4, 0, 2, 3, 1]]
+preferences = [[3,1,2,4,5],[0,3,2,5,4],[1,4,5,0,3],[4,1,2,5,0],[5,2,3,1,0],[2,3,4,1,0]]
 print(match_roommates(preferences))
+#Not very useful for the matched app
